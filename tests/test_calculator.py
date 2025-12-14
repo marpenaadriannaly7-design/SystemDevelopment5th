@@ -114,6 +114,17 @@ class TestSubtraction:
     def test_subtract_positive_numbers(self):
         """Test subtracting positive numbers."""
         # TODO: Implement
+        # Arrange
+        calc = Calculator()
+        a = 10
+        b = 3
+        expected = 7
+        
+        # Act
+        result = calc.subtract (a, b)
+        
+        # Assert
+        assert result == expected
 
 
 class TestMultiplication:
@@ -122,6 +133,17 @@ class TestMultiplication:
     def test_multiply_positive_numbers(self):
         """Test multiplying positive numbers."""
         # TODO: Implement
+        # Arrange 
+        calc = Calculator()
+        a = 4
+        b = 5
+        expected = 20
+        
+        # Act
+        result = calc.multiply(a, b)
+        
+        # Assert
+        assert result == expected
 
 
 class TestDivision:
@@ -130,6 +152,40 @@ class TestDivision:
     def test_divide_positive_numbers(self):
         """Test dividing positive numbers."""
         # TODO: Implement
+        # Arrange
+        calc = Calculator()
+        a = 10
+        b = 2
+        expected = 5.0
+        
+        # Act
+        result = calc.divide (a, b)
+        
+        # Assert
+        assert result == expected
 
 
-
+class TestInvalidInputs:
+    """Tests for invalid input values."""
+    
+    def test_add_raises_exception_when_input_too_large(self):
+        """Test add raises InvalidInputException for too large input."""
+        #Arrage
+        calc = Calculator()
+        a = 1_000_001
+        b = 1
+        
+        #Act/Assert
+        with pytest.raises(InvalidInputException):
+            calc.add(a, b)
+            
+    def test_subtract_raises_exception_when_input_too_small(self):
+        """Test subtract raises InvalidInputException for too small input."""
+        # Arrage
+        calc = Calculator()
+        a = 1_000_001
+        b = 1
+        
+        #Act/ Assert
+        with pytest.raises(InvalidInputException):
+            calc.subtract(a, b)
